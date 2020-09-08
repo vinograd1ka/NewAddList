@@ -17,14 +17,18 @@
 
         list.appendChild(div);
 
-        div.onclick = function() {
+        /*div.onclick = function() {
             if(div.classList.contains('complete')){
                 div.classList.remove("complete");
             }
 
             else{
-                div.classList.add('complete')
+                div.classList.add('complete');
             }
+        };*/
+
+        div.onclick = function() {
+            div.classList.toggle('complete');
         };
 
     });
@@ -45,7 +49,7 @@
 
         list.appendChild(div);
 
-        div.onclick = function() {
+        /*div.onclick = function() {
             if(div.classList.contains('complete')){
                 div.classList.remove("complete");
             }
@@ -53,6 +57,10 @@
             else{
                 div.classList.add('complete')
             }
+        };*/
+
+        div.onclick = function() {
+            div.classList.toggle('complete');
         };
 
     });
