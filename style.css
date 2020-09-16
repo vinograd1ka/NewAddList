@@ -99,3 +99,12 @@ input[type="search"]{
 .complete .add-section-header{
     text-decoration:line-through;
 }
+
+.section-count{
+    display:block;
+}
+
+.count-complete .section-count{
+    display:block;
+}
+
