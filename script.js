@@ -7,105 +7,114 @@
         var deleteButton = document.getElementById('delete-button');
         var countingEl = document.getElementById('counting');
         var count = 0;
-        addButton1.addEventListener('click', function () {
-            var div = document.createElement("div");
-            div.className = "add-section-container"
-            div.innerHTML =
-            '<div class="circle-red"></div>' +
-                '<div class="add-section-header">'+input1.value+'</div>' +
-                '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
-            list.appendChild(div);
-            /*div.onclick = function() {
-                if(div.classList.contains('complete')){
-                    div.classList.remove("complete");
-                }
-
-                else{
-                    div.classList.add('complete');
-                }
-            };*/
-            div.onclick = function() {
-                div.classList.toggle('complete');
-                if(div.classList.contains('complete')){
-                    count++
-                    countingEl.innerHTML =
-                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-                }
-
-                else{
-                    count--
-                    countingEl.innerHTML =
-                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-                }
-
-                if(count === 0){
-                    countingEl.style.display = 'none';
-                    deleteButton.style.display = 'none';
-                }
-
-                else{
-                    countingEl.style.display = 'block';
-                    deleteButton.style.display = 'block';
-                }
-            };
-        });
 
 
 
-        document.getElementById("add-button1").onclick = function(e) {
-            document.getElementById("input1").value = "";
-        }
 
-        addButton2.addEventListener('click', function () {
-            var div = document.createElement("div");
 
-            div.className = "add-section-container"
-            div.innerHTML =
-                '<div class="circle-green"></div>' +
-                '<div class="add-section-header">'+input2.value+'</div>' +
-                '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
+    addButton1.addEventListener('click', function () {
+        var div = document.createElement("div");
+        div.className = "add-section-container"
+        div.innerHTML =
+        '<div class="circle-red"></div>' +
+            '<div class="add-section-header">'+input1.value+'</div>' +
+            '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
+        list.appendChild(div);
 
-            list.appendChild(div);
+        div.onclick = function() {
+            div.classList.toggle('complete');
+            if(div.classList.contains('complete')){
+                count++
+                countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+            }
 
-            /*div.onclick = function() {
-                if(div.classList.contains('complete')){
-                    div.classList.remove("complete");
-                }
-                else{
-                    div.classList.add('complete')
-                }
-            };*/
+            else{
+                count--
+                countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+            }
 
-            div.onclick = function() {
-                div.classList.toggle('complete');
-                if(div.classList.contains('complete')){
-                    count++
-                    countingEl.innerHTML =
-                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-                }
 
-                else{
-                    count--
-                    countingEl.innerHTML =
-                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-                }
-            };
-        });
+            if(count === 0){
+                countingEl.style.display = 'none';
+                deleteButton.style.display = 'none';
+            }
+
+            else{
+                countingEl.style.display = 'block';
+                deleteButton.style.display = 'block';
+            }
+        };
+    });
+
+
+
+    document.getElementById("add-button1").onclick = function(e) {
+        document.getElementById("input1").value = "";
+    }
+
+    addButton2.addEventListener('click', function () {
+        var div = document.createElement("div");
+
+        div.className = "add-section-container"
+        div.innerHTML =
+            '<div class="circle-green"></div>' +
+            '<div class="add-section-header">'+input2.value+'</div>' +
+            '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
+
+        list.appendChild(div);
+
+        div.onclick = function() {
+            div.classList.toggle('complete');
+            if(div.classList.contains('complete')){
+                count++
+                countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+            }
+
+            else{
+                count--
+                countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+            }
+
+            if(count === 0){
+                countingEl.style.display = 'none';
+                deleteButton.style.display = 'none';
+            }
+
+            else{
+                countingEl.style.display = 'block';
+                deleteButton.style.display = 'block';
+            }
+        };
+    });
+
+    if(count === 0){
+        countingEl.style.display = 'none';
+        deleteButton.style.display = 'none';
+    }
+
+    else{
+        countingEl.style.display = 'block';
+        deleteButton.style.display = 'block';
+    }
 
     deleteButton.onclick = function() {
         var addComplete = document.querySelectorAll('.complete');
         for (let i = 0; i < addComplete.length; i++) {
-            count--;
             addComplete[i].style.display = 'none';
+            count--;
+            countingEl.innerHTML =
+                '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
         }
-    };
 
+    };
 
         document.getElementById("add-button2").onclick = function(e) {
             document.getElementById("input2").value = "";
         }
-
-
 })();
 
 
