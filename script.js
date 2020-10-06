@@ -4,12 +4,9 @@
         var addButton1 = document.getElementById('add-button1');
         var addButton2 = document.getElementById('add-button2');
         var list = document.getElementById('add-section');
-        var check = document.getElementById('check');
-        var countEl = document.getElementById('count');
-        var change = document.getElementById('change');
-        var count = 0;
         var deleteButton = document.getElementById('delete-button');
-
+        var countingEl = document.getElementById('counting');
+        var count = 0;
         addButton1.addEventListener('click', function () {
             var div = document.createElement("div");
 
@@ -33,8 +30,20 @@
 
             div.onclick = function() {
                 div.classList.toggle('complete');
-                countEl.classList.add('count-complete');
+                if(div.classList.contains('complete')){
+                    count++
+                    countingEl.innerHTML =
+                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+                }
+
+                else{
+                    count--
+                    countingEl.innerHTML =
+                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+                }
             };
+
+
 
         });
 
@@ -64,14 +73,16 @@
 
             div.onclick = function() {
                 div.classList.toggle('complete');
-                var lengthCheck = document.getElementsByClassName('complete');
-                if(lengthCheck.length){
-                    countEl.innerHTML =
-                        '<div class="section-count" id=\'count\'><div id="change">Выбранно:</div></div>'
+                if(div.classList.contains('complete')){
+                    count++
+                    countingEl.innerHTML =
+                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
                 }
 
                 else{
-                    count--;
+                    count--
+                    countingEl.innerHTML =
+                        '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
                 }
             };
         });
@@ -81,14 +92,23 @@
         for (let i = 0; i < addComplete.length; i++) {
             count--;
             addComplete[i].style.display = 'none';
-
         }
     };
 
+    if(count === 0){
+        countingEl.style.display = 'none';
+        deleteButton.style.display = 'none';
+    }
 
+    else{
+        countingEl.style.display = 'block';
+        deleteButton.style.display = 'block';
+    }
         document.getElementById("add-button2").onclick = function(e) {
             document.getElementById("input2").value = "";
         }
+
+
 })();
 
 
