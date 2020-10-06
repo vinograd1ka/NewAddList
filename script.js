@@ -7,8 +7,8 @@
         var check = document.getElementById('check');
         var countEl = document.getElementById('count');
         var change = document.getElementById('change');
-        var count = 1;
-
+        var count = 0;
+        var deleteButton = document.getElementById('delete-button');
 
         addButton1.addEventListener('click', function () {
             var div = document.createElement("div");
@@ -38,7 +38,6 @@
 
         });
 
-
         document.getElementById("add-button1").onclick = function(e) {
             document.getElementById("input1").value = "";
         }
@@ -58,33 +57,70 @@
                 if(div.classList.contains('complete')){
                     div.classList.remove("complete");
                 }
-
                 else{
                     div.classList.add('complete')
                 }
             };*/
 
-
-
             div.onclick = function() {
                 div.classList.toggle('complete');
-                if(count++){
-                    count++;
+                var lengthCheck = document.getElementsByClassName('complete');
+                if(lengthCheck.length){
                     countEl.innerHTML =
-                        ' <div class="section-count" id=\'count\'>Выбрано:1<div id="change"></div></div>'
+                        '<div class="section-count" id=\'count\'><div id="change">Выбранно:</div></div>'
                 }
 
                 else{
                     count--;
                 }
-
             };
-
         });
+
+    deleteButton.onclick = function() {
+        var addComplete = document.querySelectorAll('.complete');
+        for (let i = 0; i < addComplete.length; i++) {
+            count--;
+            addComplete[i].style.display = 'none';
+
+        }
+    };
+
 
         document.getElementById("add-button2").onclick = function(e) {
             document.getElementById("input2").value = "";
         }
-
-
 })();
+
+
+/*var string = 'asdasdasf'; //string
+console.log(string.length);//вывведет длинну строки
+
+var number = 12345.6789;//number
+console.log(number.toFixed(1));//Вернёт '12345.7': округлением
+
+
+var x = false; //boolean
+if (x) {
+    // этот код не будет выполнен
+}
+
+var foo = null; ///null
+console.log(foo); //null
+
+
+console.log(number.length) //undefined
+var func1 = function myFunction() { //function
+
+}
+console.log(func1.name);//вернет имя функции
+
+const bigInt = 1234567890123456789012345678901234567890n;
+console.log(bigInt);
+
+typeof 0 // "number"
+
+let user = {     // объект
+    name: "John",  // под ключом "name" хранится значение "John"
+    age: 30        // под ключом "age" хранится значение 30
+};
+ */
