@@ -6,9 +6,11 @@
         var list = document.getElementById('add-section');
         var deleteButton = document.getElementById('delete-button');
         var countingEl = document.getElementById('counting');
-        var count = 0;
 
 
+
+
+        //1 КНОПКА
 
 
 
@@ -23,38 +25,34 @@
 
         div.onclick = function() {
             div.classList.toggle('complete');
-            if(div.classList.contains('complete')){
-                count++
+            var allComplete = document.querySelectorAll('complete');
+            if(allComplete.length > 0){
+
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+                    '<div class="section-count" id="counting"></div>'
+
             }
 
             else{
-                count--
+
+
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-            }
-
-
-            if(count === 0){
-                countingEl.style.display = 'none';
-                deleteButton.style.display = 'none';
-            }
-
-            else{
-                countingEl.style.display = 'block';
-                deleteButton.style.display = 'block';
+                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
             }
         };
     });
-
 
 
     document.getElementById("add-button1").onclick = function(e) {
         document.getElementById("input1").value = "";
     }
 
-    addButton2.addEventListener('click', function () {
+
+
+        //2 КНОПКА
+
+
+    /*addButton2.addEventListener('click', function () {
         var div = document.createElement("div");
 
         div.className = "add-section-container"
@@ -67,54 +65,35 @@
 
         div.onclick = function() {
             div.classList.toggle('complete');
+            var allComplete = document.querySelectorAll('complete').length;
             if(div.classList.contains('complete')){
-                count++
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+                    '<div class="section-count" id="counting">Выбранно: '+allComplete+' </div>'
             }
 
             else{
-                count--
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
-            }
-
-            if(count === 0){
-                countingEl.style.display = 'none';
-                deleteButton.style.display = 'none';
-            }
-
-            else{
-                countingEl.style.display = 'block';
-                deleteButton.style.display = 'block';
+                    '<div class="section-count" id="counting">Выбранно: '+allComplete+' </div>'
             }
         };
     });
 
-    if(count === 0){
-        countingEl.style.display = 'none';
-        deleteButton.style.display = 'none';
+    document.getElementById("add-button2").onclick = function(e) {
+        document.getElementById("input2").value = "";
     }
-
-    else{
-        countingEl.style.display = 'block';
-        deleteButton.style.display = 'block';
-    }
+        */
+        //КНОПКА ПО УДАЛЕНИЮ
 
     deleteButton.onclick = function() {
-        var addComplete = document.querySelectorAll('.complete');
-        for (let i = 0; i < addComplete.length; i++) {
-            addComplete[i].style.display = 'none';
-            count--;
+        var allComplete = document.querySelectorAll('.complete');
+        for (let i = 0; i < allComplete.length; i++) {
+            allComplete[i].style.display = 'none';
             countingEl.innerHTML =
-                '<div class="section-count" id="counting">Выбранно: '+count+' </div>'
+                '<div class="section-count" id="counting">Выбранно: '+allComplete.length+' </div>'
         }
-
     };
 
-        document.getElementById("add-button2").onclick = function(e) {
-            document.getElementById("input2").value = "";
-        }
+
 })();
 
 
