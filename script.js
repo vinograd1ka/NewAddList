@@ -4,9 +4,9 @@
         var addButton1 = document.getElementById('add-button1');
         var addButton2 = document.getElementById('add-button2');
         var list = document.getElementById('add-section');
-        var deleteButton = document.getElementById('delete-button');
-        var countingEl = document.getElementById('counting');
 
+        var deleteButton1 = document.getElementById('delete-button1');
+        var countingEl = document.getElementById('counting');
         //1 КНОПКА
 
 
@@ -25,31 +25,20 @@
             if(allComplete.length > 0){
                countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
-                console.log(allComplete.length);
-               deleteButton.style.display = 'block';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
-                deleteButton.style.display = 'none';
             }
         };
     });
-
-
-
-
-
 
     document.getElementById("add-button1").onclick = function(e) {
         document.getElementById("input1").value = "";
     }
 
-
-
         //2 КНОПКА
-
 
     addButton2.addEventListener('click', function () {
         var div = document.createElement("div");
@@ -68,14 +57,11 @@
             if(allComplete.length > 0){
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
-                console.log(allComplete.length);
-                deleteButton.style.display = 'block';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
-                deleteButton.style.display = 'none';
             }
         };
     });
@@ -86,16 +72,19 @@
 
         //КНОПКА ПО УДАЛЕНИЮ
 
-    deleteButton.onclick = function() {
-        var allComplete = document.querySelectorAll('.complete');
-        for (let i = 0; i < allComplete.length; i++) {
-            allComplete[i].remove();
-        }
-        countingEl.innerHTML =
-            '<div class="section-count" id="counting"></div>'
 
-    };
 
+    deleteButton1.addEventListener('click', function () {
+        var deleteButton = document.getElementById('delete-button');
+        deleteButton.onclick = function() {
+            var allComplete = document.querySelectorAll('.complete');
+            for (let i = 0; i < allComplete.length; i++) {
+                allComplete[i].remove();
+            }
+            countingEl.innerHTML =
+                '<div class="section-count" id="counting"></div>'
+        };
+    });
 
 })();
 
