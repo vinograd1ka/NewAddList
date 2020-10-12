@@ -7,11 +7,7 @@
         var deleteButton = document.getElementById('delete-button');
         var countingEl = document.getElementById('counting');
 
-
-
-
         //1 КНОПКА
-
 
 
     addButton1.addEventListener('click', function () {
@@ -25,22 +21,25 @@
 
         div.onclick = function() {
             div.classList.toggle('complete');
-            var allComplete = document.querySelectorAll('complete');
+            var allComplete = document.querySelectorAll('.complete');
             if(allComplete.length > 0){
-
-                countingEl.innerHTML =
-                    '<div class="section-count" id="counting"></div>'
-
+               countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+                console.log(allComplete.length);
+               deleteButton.style.display = 'block';
             }
 
             else{
-
-
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+                    '<div class="section-count" id="counting"></div>'
+                deleteButton.style.display = 'none';
             }
         };
     });
+
+
+
+
 
 
     document.getElementById("add-button1").onclick = function(e) {
@@ -52,7 +51,7 @@
         //2 КНОПКА
 
 
-    /*addButton2.addEventListener('click', function () {
+    addButton2.addEventListener('click', function () {
         var div = document.createElement("div");
 
         div.className = "add-section-container"
@@ -65,15 +64,18 @@
 
         div.onclick = function() {
             div.classList.toggle('complete');
-            var allComplete = document.querySelectorAll('complete').length;
-            if(div.classList.contains('complete')){
+            var allComplete = document.querySelectorAll('.complete');
+            if(allComplete.length > 0){
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+allComplete+' </div>'
+                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+                console.log(allComplete.length);
+                deleteButton.style.display = 'block';
             }
 
             else{
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно: '+allComplete+' </div>'
+                    '<div class="section-count" id="counting"></div>'
+                deleteButton.style.display = 'none';
             }
         };
     });
@@ -81,16 +83,17 @@
     document.getElementById("add-button2").onclick = function(e) {
         document.getElementById("input2").value = "";
     }
-        */
+
         //КНОПКА ПО УДАЛЕНИЮ
 
     deleteButton.onclick = function() {
         var allComplete = document.querySelectorAll('.complete');
         for (let i = 0; i < allComplete.length; i++) {
-            allComplete[i].style.display = 'none';
-            countingEl.innerHTML =
-                '<div class="section-count" id="counting">Выбранно: '+allComplete.length+' </div>'
+            allComplete[i].remove();
         }
+        countingEl.innerHTML =
+            '<div class="section-count" id="counting"></div>'
+
     };
 
 
