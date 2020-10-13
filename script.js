@@ -4,7 +4,7 @@
         var addButton1 = document.getElementById('add-button1');
         var addButton2 = document.getElementById('add-button2');
         var list = document.getElementById('add-section');
-
+        var flexDisplay = document.getElementById('display-flex');
         var deleteButton1 = document.getElementById('delete-button1');
         var countingEl = document.getElementById('counting');
         //1 КНОПКА
@@ -25,13 +25,13 @@
             if(allComplete.length > 0){
                countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
-                deleteButton1.style.display = 'block';
+                flexDisplay.style.display = 'flex';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
-                deleteButton1.style.display = 'none';
+                flexDisplay.style.display = 'none';
             }
         };
     });
@@ -59,13 +59,13 @@
             if(allComplete.length > 0){
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
-                deleteButton1.style.display = 'block';
+                flexDisplay.style.display = 'flex';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
-                deleteButton1.style.display = 'none';
+                flexDisplay.style.display = 'none';
             }
         };
     });
