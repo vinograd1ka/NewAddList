@@ -115,4 +115,5 @@ input[type="search"]{
 .delete-button{
     height:50px;
     width:130px;
+    display:none;
 }

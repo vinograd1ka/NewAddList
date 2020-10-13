@@ -25,11 +25,13 @@
             if(allComplete.length > 0){
                countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+                deleteButton1.style.display = 'block';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
+                deleteButton1.style.display = 'none';
             }
         };
     });
@@ -57,11 +59,13 @@
             if(allComplete.length > 0){
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+                deleteButton1.style.display = 'block';
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
+                deleteButton1.style.display = 'none';
             }
         };
     });
