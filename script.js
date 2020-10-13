@@ -87,6 +87,8 @@
             }
             countingEl.innerHTML =
                 '<div class="section-count" id="counting"></div>'
+            flexDisplay.style.display = 'none';
+
         };
     });
 
