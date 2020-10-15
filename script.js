@@ -5,9 +5,36 @@
         var addButton2 = document.getElementById('add-button2');
         var list = document.getElementById('add-section');
         var flexDisplay = document.getElementById('display-flex');
-        var deleteButton1 = document.getElementById('delete-button1');
         var countingEl = document.getElementById('counting');
-        //1 КНОПКА
+        //var completeRedChange = document.getElementById('complete-red-change');
+
+
+        //МОДАЛЬНОЕ ОКНО
+
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("myBtn");
+        var span = document.getElementsByClassName("close")[0];
+        var closeButton = document.getElementById('close-button');
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        closeButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+    //1 КНОПКА
 
 
     addButton1.addEventListener('click', function () {
@@ -20,15 +47,22 @@
         list.appendChild(div);
 
         div.onclick = function() {
-            div.classList.toggle('complete');
-            var allComplete = document.querySelectorAll('.complete');
-            if(allComplete.length > 0){
-               countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+            div.classList.toggle('complete-red');
+            var completeRed = document.querySelectorAll('.complete-red');
+
+            if(completeRed.length > 0){
+                //completeRedChange.innerHTML =
+                    //' <div class="modal-body" id="complete-red-change">Вы точно хотите удалить выбранное? Среди них есть важные!</div>'
+
+                countingEl.innerHTML =
+                    '<div class="section-count" id="counting">Выбранно:'+completeRed.length+'</div>'
                 flexDisplay.style.display = 'flex';
             }
 
             else{
+                //completeRedChange.innerHTML =
+                    //' <div class="modal-body" id="complete-red-change">Вы точно хотите удалить выбранное?</div>'
+
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
                 flexDisplay.style.display = 'none';
@@ -66,6 +100,7 @@
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
                 flexDisplay.style.display = 'none';
+
             }
         };
     });
@@ -76,23 +111,27 @@
 
         //КНОПКА ПО УДАЛЕНИЮ
 
+    var deleteButton = document.getElementById('delete-button');
+    deleteButton.onclick = function() {
+        var allComplete = document.querySelectorAll('.complete');
+        for (let i = 0; i < allComplete.length; i++) {
+            allComplete[i].remove();
+        }
+        var completeRed = document.querySelectorAll('.complete-red');
 
+        for (let i = 0; i < completeRed.length; i++) {
+            completeRed[i].remove();
+        }
 
-    deleteButton1.addEventListener('click', function () {
-        var deleteButton = document.getElementById('delete-button');
-        deleteButton.onclick = function() {
-            var allComplete = document.querySelectorAll('.complete');
-            for (let i = 0; i < allComplete.length; i++) {
-                allComplete[i].remove();
-            }
-            countingEl.innerHTML =
-                '<div class="section-count" id="counting"></div>'
-            flexDisplay.style.display = 'none';
-
-        };
-    });
+        countingEl.innerHTML =
+            '<div class="section-count" id="counting"></div>'
+        flexDisplay.style.display = 'none';
+    };
 
 })();
+
+
+
 
 
 /*var string = 'asdasdasf'; //string

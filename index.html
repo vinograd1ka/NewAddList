@@ -24,30 +24,9 @@
 
 <div class="section">
 
-    <!-- Button trigger modal -->
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Удаление</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Вы точно хотите удалить выбранное?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-                    <button type="button" class="btn  btn-primary" data-dismiss="modal" id="delete-button">Да</button>
 
-                </div>
-                </div>
-            </div>
-        </div>
 
 
         <div class="two-column-section">
@@ -61,11 +40,23 @@
                 <button type="submit" id="add-button1" class="button">Добавить</button>
                 <div class="flex" id="display-flex">
                     <div class="section-count" id='counting'></div>
-                    <button type="button" class="btn btn-primary delete-button" data-toggle="modal" data-target="#exampleModal" id="delete-button1">
-                        Удалить
-                    </button>
+
+                    <button id="myBtn">Удалить</button>
+
+                    <div id="myModal" class="modal">
+
+                        <div class="modal-contents">
+                            <span class="close">&times;</span>
+                            <p class="complete-red-change">Вы точно хотите удалить выбранное?</p>
+                            <div class="modal-buttons">
+                                <button id="close-button">Нет</button>
+                                <button id="delete-button">Да</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
             <div class="section-right">
                 <div class="section-header">Добавить неважное:</div>
                 <form action="#">
@@ -83,7 +74,6 @@
 
         </div>
     </div>
-
 
     <script src="script.js"></script>
 
