@@ -47,25 +47,20 @@
         list.appendChild(div);
 
         div.onclick = function() {
-            div.classList.toggle('complete-red');
-            var completeRed = document.querySelectorAll('.complete-red');
+            div.classList.toggle('complete');
 
-            if(completeRed.length > 0){
-                //completeRedChange.innerHTML =
-                    //' <div class="modal-body" id="complete-red-change">Вы точно хотите удалить выбранное? Среди них есть важные!</div>'
-
+            var allComplete = document.querySelectorAll('.complete');
+            if(allComplete.length > 0){
                 countingEl.innerHTML =
-                    '<div class="section-count" id="counting">Выбранно:'+completeRed.length+'</div>'
+                    '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
                 flexDisplay.style.display = 'flex';
             }
 
             else{
-                //completeRedChange.innerHTML =
-                    //' <div class="modal-body" id="complete-red-change">Вы точно хотите удалить выбранное?</div>'
-
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
                 flexDisplay.style.display = 'none';
+
             }
         };
     });
