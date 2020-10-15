@@ -17,7 +17,25 @@
         var closeButton = document.getElementById('close-button');
 
         btn.onclick = function() {
-            modal.style.display = "block";
+            var allImportant = document.querySelectorAll('.important');
+            var allComplete = document.querySelectorAll('.complete');
+            if(allImportant.length > 0){
+                modal.style.display = "block";
+            }
+
+            else{
+                modal.style.display = "none";
+                for (let i = 0; i < allComplete.length; i++) {
+                    allComplete[i].remove();
+
+                    countingEl.innerHTML =
+                        '<div class="section-count" id="counting"></div>'
+                    flexDisplay.style.display = 'none';
+
+                }
+
+            }
+
         }
 
         span.onclick = function() {
@@ -48,6 +66,7 @@
 
         div.onclick = function() {
             div.classList.toggle('complete');
+            div.classList.toggle('important');
 
             var allComplete = document.querySelectorAll('.complete');
             if(allComplete.length > 0){
@@ -109,19 +128,21 @@
     var deleteButton = document.getElementById('delete-button');
     deleteButton.onclick = function() {
         var allComplete = document.querySelectorAll('.complete');
+        var allImportant = document.querySelectorAll('.important');
+
         for (let i = 0; i < allComplete.length; i++) {
             allComplete[i].remove();
-        }
-        var completeRed = document.querySelectorAll('.complete-red');
-
-        for (let i = 0; i < completeRed.length; i++) {
-            completeRed[i].remove();
         }
 
         countingEl.innerHTML =
             '<div class="section-count" id="counting"></div>'
         flexDisplay.style.display = 'none';
+
+
     };
+
+
+
 
 })();
 
