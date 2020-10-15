@@ -166,6 +166,6 @@ input[type="search"]{
     to {top: 0; opacity: 1}
 }
 
-p{
+.complete-red-change{
     padding:50px 0 0 20px;
 }

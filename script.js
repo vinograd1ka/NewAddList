@@ -6,11 +6,9 @@
         var list = document.getElementById('add-section');
         var flexDisplay = document.getElementById('display-flex');
         var countingEl = document.getElementById('counting');
-        //var completeRedChange = document.getElementById('complete-red-change');
-
+        var completeRedChange = document.getElementById('change-red');
 
         //МОДАЛЬНОЕ ОКНО
-
         var modal = document.getElementById("myModal");
         var btn = document.getElementById("myBtn");
         var span = document.getElementsByClassName("close")[0];
@@ -19,7 +17,10 @@
         btn.onclick = function() {
             var allImportant = document.querySelectorAll('.important');
             var allComplete = document.querySelectorAll('.complete');
+
             if(allImportant.length > 0){
+                completeRedChange.innerHTML =
+                    '<p class="complete-red-change">Вы точно хотите удалить выбранное ('+allImportant.length+')? Там есть важные!</p>'
                 modal.style.display = "block";
             }
 
@@ -31,11 +32,8 @@
                     countingEl.innerHTML =
                         '<div class="section-count" id="counting"></div>'
                     flexDisplay.style.display = 'none';
-
                 }
-
             }
-
         }
 
         span.onclick = function() {
@@ -51,10 +49,7 @@
                 modal.style.display = "none";
             }
         }
-
     //1 КНОПКА
-
-
     addButton1.addEventListener('click', function () {
         var div = document.createElement("div");
         div.className = "add-section-container"
@@ -67,29 +62,29 @@
         div.onclick = function() {
             div.classList.toggle('complete');
             div.classList.toggle('important');
-
             var allComplete = document.querySelectorAll('.complete');
+            var allImportant = document.querySelectorAll('.important');
+
             if(allComplete.length > 0){
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
                 flexDisplay.style.display = 'flex';
+
+                completeRedChange.innerHTML =
+                    '<p class="complete-red-change">Вы точно хотите удалить выбранное ('+allImportant.length+')? Там есть важные!</p>'
             }
 
             else{
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
                 flexDisplay.style.display = 'none';
-
             }
         };
     });
-
     document.getElementById("add-button1").onclick = function(e) {
         document.getElementById("input1").value = "";
     }
-
         //2 КНОПКА
-
     addButton2.addEventListener('click', function () {
         var div = document.createElement("div");
 
@@ -98,12 +93,12 @@
             '<div class="circle-green"></div>' +
             '<div class="add-section-header">'+input2.value+'</div>' +
             '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
-
         list.appendChild(div);
 
         div.onclick = function() {
             div.classList.toggle('complete');
             var allComplete = document.querySelectorAll('.complete');
+
             if(allComplete.length > 0){
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
@@ -114,17 +109,13 @@
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting"></div>'
                 flexDisplay.style.display = 'none';
-
             }
         };
     });
-
     document.getElementById("add-button2").onclick = function(e) {
         document.getElementById("input2").value = "";
     }
-
         //КНОПКА ПО УДАЛЕНИЮ
-
     var deleteButton = document.getElementById('delete-button');
     deleteButton.onclick = function() {
         var allComplete = document.querySelectorAll('.complete');
@@ -137,13 +128,7 @@
         countingEl.innerHTML =
             '<div class="section-count" id="counting"></div>'
         flexDisplay.style.display = 'none';
-
-
     };
-
-
-
-
 })();
 
 
