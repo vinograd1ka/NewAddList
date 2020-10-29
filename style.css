@@ -1,12 +1,12 @@
-body{
-    background:#2c3e50;
+.change-input {
+    font-size:large;
 }
-
 
 .section{
     width:900px;
     height:600px;
     margin:auto;
+    background: lavenderblush;
     border:2px solid black;
 }
 
@@ -35,14 +35,17 @@ body{
     text-align:center;
     padding-top:50px;
     margin:0 auto;
+    max-height:443px;
+    overflow: auto;
 }
 
 .add-section-container{
     display:flex;
-    max-width:350px;
+    max-width:450px;
     margin:0 auto;
     padding-top:7px;
     font-size:30px;
+    position:relative;
 }
 
 .add-section-circle{
@@ -51,6 +54,9 @@ body{
     border: 1px solid black;
     border-radius: 50%;
     padding-bottom: 40px;
+    position:absolute;
+    right:1px;
+    background-color: white;
 }
 
 .circle-red{
@@ -95,6 +101,10 @@ input[type="search"]{
 .complete .check{
     color:#2ecc71;
     visibility: visible;
+}
+
+.add-section-header{
+    margin-left:10px;
 }
 
 .complete .add-section-header{
@@ -166,6 +176,12 @@ input[type="search"]{
     to {top: 0; opacity: 1}
 }
 
-.complete-red-change{
-    padding:50px 0 0 20px;
+input[type="change"] {
+    outline: none;
+    border: 2px solid #bdc3c7;
+    display: block;
+    width: 86%;
+    height: 50px;
+    background: #fff;
+    border-radius: 7px;
 }

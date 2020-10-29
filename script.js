@@ -35,15 +35,12 @@
                 }
             }
         }
-
         span.onclick = function() {
             modal.style.display = "none";
         }
-
         closeButton.onclick = function() {
             modal.style.display = "none";
         }
-
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
@@ -53,19 +50,24 @@
     addButton1.addEventListener('click', function () {
         var div = document.createElement("div");
         div.className = "add-section-container"
+        div.id = 'add-section-container'
         div.innerHTML =
         '<div class="circle-red"></div>' +
-            '<div class="add-section-header">'+input1.value+'</div>' +
-            '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
+            '<div class="add-section-header" id="section-header">'+input1.value+'</div>'
+            +
+            '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
         list.appendChild(div);
 
-        div.onclick = function() {
-            div.classList.toggle('complete');
-            div.classList.toggle('important');
-            var allComplete = document.querySelectorAll('.complete');
-            var allImportant = document.querySelectorAll('.important');
+        div.onclick = function(event) {
+            var sectionHeader = div.getElementsByClassName('add-section-header')[0].innerHTML
+            var target = event.target;
 
-            if(allComplete.length > 0){
+            if (target.classList.contains('add-section-circle')) {
+                div.classList.toggle('complete');
+                div.classList.toggle('important');
+
+                var allComplete = document.querySelectorAll('.complete');
+                var allImportant = document.querySelectorAll('.important');
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
                 flexDisplay.style.display = 'flex';
@@ -74,17 +76,62 @@
                     '<p class="complete-red-change">Вы точно хотите удалить выбранное ('+allImportant.length+')? Там есть важные!</p>'
             }
 
-            else{
-                countingEl.innerHTML =
-                    '<div class="section-count" id="counting"></div>'
+            else if (target.classList.contains('add-section-header')) {
+                div.innerHTML =
+                    ''
+                var CircleRed = document.createElement("div");
+                CircleRed.className = "circle-red"
+                div.appendChild(CircleRed);
+
+                var input = document.createElement('input');
+                input.className = "input-change"
+                input.value = sectionHeader;
+                div.appendChild(input);
+
+                var addSectionCircle = document.createElement("div");
+                addSectionCircle.className = "add-section-circle"
+                div.appendChild(addSectionCircle);
+
+                input.addEventListener('blur', function () {
+                    div.removeChild(input);
+                    div.className = "add-section-container"
+                    div.innerHTML =
+                        '<div class="circle-red"></div>' +
+                        '<div class="add-section-header" id="section-header">'+input.value+'</div>' +
+                        '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
+                    list.appendChild(div);
+                })
                 flexDisplay.style.display = 'none';
             }
         };
+
+
+        /*
+        div.classList.toggle('complete');
+        div.classList.toggle('important');
+        var allComplete = document.querySelectorAll('.complete');
+        var allImportant = document.querySelectorAll('.important');
+
+        if(allComplete.length > 0){
+            countingEl.innerHTML =
+                '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
+            flexDisplay.style.display = 'flex';
+
+            completeRedChange.innerHTML =
+                '<p class="complete-red-change">Вы точно хотите удалить выбранное ('+allImportant.length+')? Там есть важные!</p>'
+        }
+
+        else{
+            countingEl.innerHTML =
+                '<div class="section-count" id="counting"></div>'
+            flexDisplay.style.display = 'none';
+        }*/
     });
+
     document.getElementById("add-button1").onclick = function(e) {
         document.getElementById("input1").value = "";
     }
-        //2 КНОПКА
+    //2 КНОПКА
     addButton2.addEventListener('click', function () {
         var div = document.createElement("div");
 
@@ -92,22 +139,58 @@
         div.innerHTML =
             '<div class="circle-green"></div>' +
             '<div class="add-section-header">'+input2.value+'</div>' +
-            '<div class="add-section-circle"><i class="fas fa-check check"></i></div>'
+            '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
         list.appendChild(div);
 
-        div.onclick = function() {
-            div.classList.toggle('complete');
-            var allComplete = document.querySelectorAll('.complete');
 
-            if(allComplete.length > 0){
+
+
+
+        div.onclick = function(e) {
+            var sectionHeader = div.getElementsByClassName('add-section-header')[0].innerHTML
+
+
+            var target = event.target;
+
+            if (target.classList.contains('add-section-circle')) {
+                div.classList.toggle('complete');
+                div.classList.toggle('important');
+
+                var allComplete = document.querySelectorAll('.complete');
+                var allImportant = document.querySelectorAll('.important');
                 countingEl.innerHTML =
                     '<div class="section-count" id="counting">Выбранно:'+allComplete.length+'</div>'
                 flexDisplay.style.display = 'flex';
+
+                completeRedChange.innerHTML =
+                    '<p class="complete-red-change">Вы точно хотите удалить выбранное ('+allImportant.length+')? Там есть важные!</p>'
             }
 
-            else{
-                countingEl.innerHTML =
-                    '<div class="section-count" id="counting"></div>'
+            else if (target.classList.contains('add-section-header')) {
+                div.innerHTML =
+                    ''
+                var CircleGreen = document.createElement("div");
+                CircleGreen.className = "circle-green"
+                div.appendChild(CircleGreen);
+
+                var input = document.createElement('input');
+                input.className = "input-change"
+                input.value = sectionHeader;
+                div.appendChild(input);
+
+                var addSectionCircle = document.createElement("div");
+                addSectionCircle.className = "add-section-circle"
+                div.appendChild(addSectionCircle);
+
+                input.addEventListener('blur', function () {
+                    div.removeChild(input);
+                    div.className = "add-section-container"
+                    div.innerHTML =
+                        '<div class="circle-green"></div>' +
+                        '<div class="add-section-header" id="section-header">'+input.value+'</div>' +
+                        '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
+                    list.appendChild(div);
+                })
                 flexDisplay.style.display = 'none';
             }
         };
@@ -115,6 +198,13 @@
     document.getElementById("add-button2").onclick = function(e) {
         document.getElementById("input2").value = "";
     }
+
+
+
+
+
+
+
         //КНОПКА ПО УДАЛЕНИЮ
     var deleteButton = document.getElementById('delete-button');
     deleteButton.onclick = function() {
