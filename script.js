@@ -61,9 +61,9 @@
         div.onclick = function(event) {
             var sectionHeader = div.getElementsByClassName('add-section-header')[0].innerHTML
             var target = event.target;
-
+            div.classList.toggle('complete');
             if (target.classList.contains('add-section-circle')) {
-                div.classList.toggle('complete');
+
                 div.classList.toggle('important');
 
                 var allComplete = document.querySelectorAll('.complete');
@@ -148,14 +148,11 @@
 
         div.onclick = function(e) {
             var sectionHeader = div.getElementsByClassName('add-section-header')[0].innerHTML
-
-
             var target = event.target;
-
+            div.classList.toggle('complete');
             if (target.classList.contains('add-section-circle')) {
-                div.classList.toggle('complete');
                 div.classList.toggle('important');
-
+                console.log(allComplete.length)
                 var allComplete = document.querySelectorAll('.complete');
                 var allImportant = document.querySelectorAll('.important');
                 countingEl.innerHTML =
