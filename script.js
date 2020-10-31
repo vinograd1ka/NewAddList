@@ -99,7 +99,6 @@
                         '<div class="circle-red"></div>' +
                         '<div class="add-section-header" id="section-header">'+input.value+'</div>' +
                         '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
-                    list.appendChild(div);
                 })
                 flexDisplay.style.display = 'none';
             }
@@ -186,7 +185,7 @@
                         '<div class="circle-green"></div>' +
                         '<div class="add-section-header" id="section-header">'+input.value+'</div>' +
                         '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
-                    list.appendChild(div);
+
                 })
                 flexDisplay.style.display = 'none';
             }
