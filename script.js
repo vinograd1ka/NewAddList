@@ -98,6 +98,13 @@
                         '<div class="add-section-header" id="section-header">'+input.value+'</div>' +
                         '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
                 })
+            }
+            if(allComplete.length > 0){
+                flexDisplay.style.display = 'flex';
+
+            }
+
+            else{
                 flexDisplay.style.display = 'none';
             }
         };
@@ -179,6 +186,13 @@
                         '<div class="add-section-circle" id="click-circle"><i class="fas fa-check check"></i></div>'
 
                 })
+            }
+            if(allComplete.length > 0){
+                flexDisplay.style.display = 'flex';
+
+            }
+
+            else{
                 flexDisplay.style.display = 'none';
             }
         };
